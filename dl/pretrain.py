@@ -161,9 +161,9 @@ def pretrain_model(
         monitor="val_loss", min_delta=0.00, patience=patience, verbose=True, mode="min"
     )
     trainer = pl.Trainer(
-        default_root_dir=Path(model.root),
+        default_save_path=Path(model.root),
         max_epochs=max_epochs,
-        callbacks=early_stop_callback,
+        early_stop_callback=early_stop_callback,
     )
     trainer.fit(model)
 
